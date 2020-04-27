@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Link as MyLink } from '@reach/router';
-
 export const Container = styled.div`
 	width: 100vw;
 	display: flex;

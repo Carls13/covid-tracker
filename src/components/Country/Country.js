@@ -4,7 +4,9 @@ import { Container, Flag, CountryName, Continent, Info, Block, Title, Value } fr
 
 import { Button } from './../Button/Button';
 
-export const Country = ({ data }) => {
+import { numberWithCommas } from './../../utils/formatNumber';
+
+export const Country = ({ data, onDetailClick }) => {
 	const { country, countryInfo, cases, deaths, recovered, tests, continent } = data;
 	const { iso3, flag } = countryInfo;
 
@@ -16,22 +18,22 @@ export const Country = ({ data }) => {
 			<Info>
 				<Block>
 					<Title>Total cases: </Title>
-					<Value>{cases}</Value>
+					<Value>{numberWithCommas(cases)}</Value>
 				</Block>
 				<Block>
 					<Title>Total tests: </Title>
-					<Value>{tests}</Value>
+					<Value>{numberWithCommas(tests)}</Value>
 				</Block>
 				<Block>
 					<Title>Deaths: </Title>
-					<Value>{deaths}</Value>
+					<Value>{numberWithCommas(deaths)}</Value>
 				</Block>
 				<Block>
 					<Title>Recovered: </Title>
-					<Value>{recovered}</Value>
+					<Value>{numberWithCommas(recovered)}</Value>
 				</Block>
 			</Info>
-			<Button text="Details" handleClick={() => console.log('Cominnng')} />
+			<Button text="Details" handleClick={onDetailClick} />
 		</Container>
 	)
 };

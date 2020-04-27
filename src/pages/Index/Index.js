@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState } from 'react';
 
 import { useFetching } from './../../hooks/useFetching';
 import { usePagination } from './../../hooks/usePagination';
@@ -9,6 +9,9 @@ import { Filtering } from './../../components/Filtering/Filtering';
 import { Pagination } from './../../components/Pagination/Pagination';
 import { Country } from './../../components/Country/Country';
 import { Spinner } from './../../components/Spinner/Spinner';
+import { WorldwideStats } from './../../components/WorldwideStats/WorldwideStats';
+import { CountryDetail } from './../../components/CountryDetail/CountryDetail';
+import { InfoModal } from './../../components/InfoModal/InfoModal';
 
 const COUNTRIES_PER_PAGE = 20;
 
@@ -22,6 +25,7 @@ const INITIAL_FILTERS = [
 
 export const Index = () => {
 	const [loading, countries, error, setError] = useFetching('https://corona.lmao.ninja/v2/countries');
+	const [countryDetail, setCountry] = useState(null);
 
 	const [ paginatedData, 
 			currentPage, 
@@ -32,7 +36,11 @@ export const Index = () => {
 
 	return (
 		<Container>
-			{/*<WorldWideStats/>*/}
+			{error && <InfoModal isError text={`Ocurrió un error: ${error}`} onClick={() => setError(null)}/>}
+			{
+				countryDetail && <CountryDetail data={countryDetail} onGoBack={() => setCountry(null)} />
+			}
+			<WorldwideStats/>
 			{
 				loading ? <Spinner/> : 
 				<CountriesSection>
@@ -40,7 +48,7 @@ export const Index = () => {
 					<CountriesGrid>
 						{
 							paginatedData[currentPage - 1].map((country, i) => {
-								return <Country key={i} data={country}/>
+								return <Country key={i} data={country} onDetailClick={() => setCountry(country)}/>
 							})
 						}
 					</CountriesGrid>

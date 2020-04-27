@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 
-import { Router } from '@reach/router';
-
 import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
 import { Index } from './pages/Index/Index';
 
@@ -13,10 +12,8 @@ function App() {
     <Fragment>
       <GlobalStyles/>
       <Header/>
-      <Router>
-        <Index path="/"/>
-        {/*<About path="/about"/> */}
-      </Router>
+      <Index/>
+      <Footer/>
     </Fragment>
   );
 }

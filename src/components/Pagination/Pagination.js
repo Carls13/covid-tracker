@@ -24,6 +24,7 @@ export const Pagination = ({ data, currentPage, setPage, recordsPerPage }) => {
 				{currentPage !== 1 && <Prev onClick={() => setPage(currentPage - 1)}>Anterior</Prev>}
 				<Pages>
 					{
+						// eslint-disable-next-line
 						data.map((page, i) => {
 							const pageToControl = i + 1;
 							const condition = (pageToControl === 1)  || (pageToControl === currentPage - 1) ||
