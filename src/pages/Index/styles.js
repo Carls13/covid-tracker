@@ -22,4 +22,8 @@ export const CountriesGrid = styled.div`
 		display: flex;
 		flex-direction: column;
 	}
+
+	@media screen and (max-width: 800px) and (min-width: 600px) {
+		grid-template-columns: 1fr 1fr;
+	}
 `;

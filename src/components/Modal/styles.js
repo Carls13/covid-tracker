@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 export const ModalContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	position: fixed;
 	z-index: 100;
 
@@ -20,7 +19,9 @@ export const ModalContainer = styled.div`
 	height: 100%;
 	overflow: auto;
 	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.4);`;
+	background-color: rgba(0, 0, 0, 0.4);
+
+`;
 
 export const ModalContent = styled.div`
 	text-align: center;
@@ -33,4 +34,11 @@ export const ModalContent = styled.div`
 
 	@media screen and (max-width: 600px) {
 		width: 90%;
-	}`;
+	}
+
+	@media screen and (max-width: 800px) and (min-width: 600px) {
+		margin: 0 auto;
+		width: 70%;
+	}
+
+	`;

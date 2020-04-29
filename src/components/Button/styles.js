@@ -7,7 +7,7 @@ export const MyButton = styled.button`
 	
     border-radius: 5px;
 	color: #FFF;
-	width: 20%;
+	width: 50%;
 	text-align: center;
 	cursor: pointer;
 	
@@ -55,10 +55,5 @@ export const MyButton = styled.button`
 					`
 			}
 		}
-	}
-
-	@media screen and (max-width: 600px) {
-		width: auto;
-		min-width: 20%;
 	}
 `;

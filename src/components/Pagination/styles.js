@@ -12,6 +12,13 @@ export const PagesControl = styled.div`
 	font-weight: bold;
 	margin: 10px;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+`;
+
+export const PrevNext = styled.div`
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;

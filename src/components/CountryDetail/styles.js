@@ -13,9 +13,6 @@ export const Flag = styled.img`
 	margin: 10px auto;
 	height: 20vh;
 
-	@media screen and (max-width: 600px) {
-		margin-top: 40vh;
-	}
 `;
 
 export const CountryName = styled.h1`

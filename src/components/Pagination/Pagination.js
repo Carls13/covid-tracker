@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PaginationDiv, PagesControl, Prev, Next, Pages, Page, Info, Text } from './styles.js';
+import { PaginationDiv, PagesControl, PrevNext, Prev, Next, Pages, Page, Info, Text } from './styles.js';
 
 export const Pagination = ({ data, currentPage, setPage, recordsPerPage }) => {
 	const showingFrom = (currentPage - 1) * recordsPerPage + 1;
@@ -21,25 +21,27 @@ export const Pagination = ({ data, currentPage, setPage, recordsPerPage }) => {
 	return (
 		<PaginationDiv>
 			<PagesControl>
-				{currentPage !== 1 && <Prev onClick={() => setPage(currentPage - 1)}>Anterior</Prev>}
-				<Pages>
-					{
-						// eslint-disable-next-line
-						data.map((page, i) => {
-							const pageToControl = i + 1;
-							const condition = (pageToControl === 1)  || (pageToControl === currentPage - 1) ||
-											  (pageToControl === currentPage) || (pageToControl === currentPage + 1)
-											   || (pageToControl === totalPages);
+				<PrevNext>
+					{currentPage !== 1 && <Prev onClick={() => setPage(currentPage - 1)}>Anterior</Prev>}
+					{(currentPage !== data.length && totalPages > 0) && <Next onClick={() => setPage(currentPage + 1)}>Siguiente</Next>}
+				</PrevNext>
+					<Pages>
+						{
+							// eslint-disable-next-line
+							data.map((page, i) => {
+								const pageToControl = i + 1;
+								const condition = (pageToControl === 1)  || (pageToControl === currentPage - 1) ||
+												  (pageToControl === currentPage) || (pageToControl === currentPage + 1)
+												   || (pageToControl === totalPages);
 
 
-							if (condition) return <Page 
-													onClick={() => setPage(i + 1)} 
-													key={i} 
-													current={currentPage === i + 1}>{i + 1}</Page>
-						})
-					}
-				</Pages>
-				{(currentPage !== data.length && totalPages > 0) && <Next onClick={() => setPage(currentPage + 1)}>Siguiente</Next>}
+								if (condition) return <Page 
+														onClick={() => setPage(i + 1)} 
+														key={i} 
+														current={currentPage === i + 1}>{i + 1}</Page>
+							})
+						}
+					</Pages>
 			</PagesControl>
 			<Info>
 				<Text>{`Página actual: ${totalPages === 0 ? totalPages : currentPage}`}</Text>
