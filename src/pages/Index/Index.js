@@ -47,7 +47,7 @@ export const Index = () => {
 					<Filtering filters={filters} handleChange={handleChange} handleClear={handleClear}/>
 					<CountriesGrid>
 						{
-							paginatedData[currentPage - 1].map((country, i) => {
+							paginatedData.length > 0 && paginatedData[currentPage - 1].map((country, i) => {
 								return <Country key={i} data={country} onDetailClick={() => setCountry(country)}/>
 							})
 						}
