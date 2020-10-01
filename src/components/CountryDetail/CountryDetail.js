@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { numberWithCommas } from './../../utils/formatNumber';
+import { numberWithCommas, percentage } from './../../utils/formatNumber';
 
 import { Container, Flag, CountryName, Continent, Info, Block, Title, Value, TodayTitle } from './styles.js';
 
@@ -44,6 +44,10 @@ export const CountryDetail = ({ data, onGoBack }) => {
 					<Block>
 						<Title>Recovered: </Title>
 						<Value>{numberWithCommas(recovered)}</Value>
+					</Block>
+					<Block>
+						<Title>Known Mortality: </Title>
+						<Value>{percentage(deaths / (deaths + recovered))}</Value>
 					</Block>
 				</Info>
 				<TodayTitle>TODAY</TodayTitle>
